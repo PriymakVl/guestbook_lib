@@ -1,14 +1,15 @@
 <?php
 use Pecee\SimpleRouter\SimpleRouter;
+use App\Models\Model;
+
+include 'vendor/autoload.php';
 
 // отображение всех типов ошибок
 ini_set('display_errors', 1);
 
 session_start();
 
-require_once __DIR__ . '/vendor/autoload.php';
-
-App\Core\DB::getConnection();
+Model::connectDB();
 
 SimpleRouter::get('/', 'MainController@index');
 SimpleRouter::post('/post/add', 'MainController@addPost');

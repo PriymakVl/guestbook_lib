@@ -4,13 +4,10 @@ namespace App\Controllers;
 class BaseController 
 {
 
-    protected $layout = 'layout';
-
     public function render($content, $data = []) 
     {
-        $data['content'] = $content;
         $data['message'] = \App\Helpers\Message::display();
-        \App\Core\View::render($this->layout, $data);
+        \App\Core\View::render($content, $data);
     }
 
     public function addMessage($result, $key)
